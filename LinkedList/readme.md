@@ -19,8 +19,7 @@ Here’s a simple representation of an SLL:
 
 - The `None` at the end signifies the end of the list.
 
-
-
+---
 ## Operations on Singly Linked List
 
 ### 1. Traversal
@@ -42,14 +41,11 @@ Here’s a simple representation of an SLL:
 ---
 
 ## Advantages of SLL
-
 - **Dynamic Size**: Can grow or shrink as needed.
 - **Efficient Insertions/Deletions**: No need to shift elements like in an array.
 
 ---
-
 ## Disadvantages of SLL
-
 - **Sequential Access**: Traversing the list takes O(n) time.
 - **Memory Overhead**: Each node requires extra memory for the pointer.
 
