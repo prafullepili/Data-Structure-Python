@@ -17,24 +17,25 @@ class SingleLinkedList:
     def print(self):
         if self.head is None:
             return
-        itr = self.head
+        curr = self.head
         llstr = ""
-        while itr:
-            llstr += str(itr.data) + " --> "
-            itr = itr.next
+        while curr:
+            llstr += str(curr.data) + " --> "
+            curr = curr.next
         llstr += "None"
         print(llstr)
 
     def insert_at_end(self, data):
-        if self.head is None:
-            self.head = Node(data)
+        curr = self.head
+        if self.head is not None:
+            while curr.next:
+                curr = curr.next
+            curr.next = Node(data)
             self.length += 1
             return
-        itr = self.head
-        while itr.next:
-            itr = itr.next
+        self.head = Node(data)
         self.length += 1
-        itr.next = Node(data)
+
 
     def list_to_linkedList(self, data_list):
         """list[] of dat_lista \nEx: [12,4,3]"""
@@ -107,3 +108,11 @@ class SingleLinkedList:
                 self.length -= 1
                 break
             itr = itr.next
+
+llist = SingleLinkedList()
+llist.insert_at_beginig(10)
+llist.insert_at_end(20)
+llist.insert_at_beginig(30)
+llist.insert_at_end(30)
+llist.print()
+print(llist.length)
