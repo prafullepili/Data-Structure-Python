@@ -135,6 +135,39 @@ class SingleLinkedList:
         llstr += "None"
         print(llstr)
 
+    def find(self, data):
+        curr = self.head
+        count = 0
+        while curr:
+            if curr.data == data:
+                break
+            curr = curr.next
+            count += 1
+        if curr is None:
+            return None
+        return curr
+    
+    def find_replace(self, data, new_data):
+        search_result = self.find(data)
+        if search_result:
+            search_result.data = new_data
+            return
+        print(f'{data} not found')
+        return
+
+    def reverse(self):
+        curr = self.head
+        prev = None
+        print('After reverse'.ljust(30), end="--> ")
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        self.head = prev
+
+        
+
 llist = SingleLinkedList()
 llist.insert_at_beginnig(10)
 llist.insert_at_end(20)
@@ -157,7 +190,10 @@ llist.insert_after_value(12, 100)
 llist.show()
 llist.remove_by_value(100)
 llist.show()
+llist.find(65)
+llist.find_replace(643,'hi')
+llist.reverse()
+llist.insert_at_beginnig('Name')
+llist.insert_at_end('Prafull')
+llist.show()
 print('Final Length : ',llist.length)
-
-
-
