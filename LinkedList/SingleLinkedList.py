@@ -2,7 +2,12 @@ class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
-
+    
+    def __str__(self):
+        return f'{self.data} --> {self.next}'
+    
+    def __repr__(self):
+        return f'{self.data} --> {self.next}'
 
 class SingleLinkedList:
     def __init__(self):
@@ -65,7 +70,7 @@ class SingleLinkedList:
         if index < 0 or index >= self.length:
             raise Exception(f"Invalid index. Index should between 0 - {self.length}")
 
-        print(f'after delete at index {index}'.ljust(30), end="-->  ")
+        # print(f'after delete at index {index}'.ljust(30), end="-->  ")
         if index == 0:
             deleted = self.head
             self.head = self.head.next
@@ -84,7 +89,7 @@ class SingleLinkedList:
 
     def remove_by_value(self, data):
         if self.head.data == data:
-            print(f"After delete {data}".ljust(30), end="--> ")
+            # print(f"After delete {data}".ljust(30), end="--> ")
             self.head = self.head.next
             self.length -= 1
             return
@@ -101,18 +106,18 @@ class SingleLinkedList:
         """list[] of dat_lista \nEx: [12,4,3]"""
         self.head = None
         self.length = 0
-        print(f'\nCreated new linked list from given list', data_list)
+        # print(f'\nCreated new linked list from given list', data_list)
         for data in data_list:
             self.insert_at_end(data)
 
     def insert_after_value(self, find, insert_value):
         if self.head.data == find:
-            print(f"After inserted {insert_value} after {find}".ljust(30), end="--> ")
+            # print(f"After inserted {insert_value} after {find}".ljust(30), end="--> ")
             self.head.next = Node(insert_value, self.head.next)
             self.length += 1
             return
         itr = self.head
-        print(f"After inserted {insert_value} after {find}".ljust(30), end="--> ")
+        # print(f"After inserted {insert_value} after {find}".ljust(30), end="--> ")
         while itr:
             if itr.data == find:
                 break
@@ -152,13 +157,13 @@ class SingleLinkedList:
         if search_result:
             search_result.data = new_data
             return
-        print(f'{data} not found')
+        # print(f'{data} not found')
         return
 
     def reverse(self):
         curr = self.head
         prev = None
-        print('After reverse'.ljust(30), end="--> ")
+        # print('After reverse'.ljust(30), end="--> ")
         while curr:
             temp = curr.next
             curr.next = prev
@@ -166,7 +171,25 @@ class SingleLinkedList:
             curr = temp
         self.head = prev
 
+    def range_reverse(self,left_pos,right_pos):
+        if not self.head or left_pos == right_pos:
+            return self.head
+        dummy = Node(0, self.head)
+
+        leftPrev, curr = dummy, self.head
+        for _ in range(left_pos-1): leftPrev = curr
+        curr = leftPrev.next
+        prev = None
+        for _ in range(right_pos-left_pos + 1):
+            tmpNext = curr.next
+            curr.next = prev
+            prev = curr
+            curr = tmpNext
         
+        leftPrev.next.next = curr
+        leftPrev.next = prev
+        self.head = dummy.next
+
 
 llist = SingleLinkedList()
 llist.insert_at_beginnig(10)
@@ -184,16 +207,18 @@ llist.show()
 llist.remove_at(2)
 llist.show()
 print('Final Length : ',llist.length)
-llist.list_to_linkedList([12,34,64,65,76])
+llist.list_to_linkedList(['E','D','C','B','A'])
 llist.show()
-llist.insert_after_value(12, 100)
+llist.insert_after_value("E", 100)
 llist.show()
 llist.remove_by_value(100)
 llist.show()
 llist.find(65)
 llist.find_replace(643,'hi')
 llist.reverse()
-llist.insert_at_beginnig('Name')
-llist.insert_at_end('Prafull')
+llist.insert_at_beginnig('1')
+llist.insert_at_end('7')
 llist.show()
 print('Final Length : ',llist.length)
+llist.range_reverse(2, 6)
+llist.show()
