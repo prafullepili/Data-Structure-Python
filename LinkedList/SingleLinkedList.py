@@ -190,7 +190,6 @@ class SingleLinkedList:
         leftPrev.next = prev
         self.head = dummy.next
 
-
 llist = SingleLinkedList()
 llist.insert_at_beginnig(10)
 llist.insert_at_end(20)
@@ -221,4 +220,5 @@ llist.insert_at_end('7')
 llist.show()
 print('Final Length : ',llist.length)
 llist.range_reverse(2, 6)
+llist.list_to_linkedList(['A','A',"B","C","C","B","D","E","F","F"])
 llist.show()
