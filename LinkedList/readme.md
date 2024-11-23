@@ -36,7 +36,12 @@ NULL <- [Prev | Data | Next] <-> [Prev | Data | Next] <-> [Prev | Data | Next] -
 
 ![Doubly Linked List](images/doubly.png)
 
----
+1. ### Insert at begninng
+   ![Insert at begninng Linked List](images/operations_doubly_linked_list/Insert_at_beginning.png)
+2. ### Insert at middle
+   ![Insert at begninng Linked List](images/operations_doubly_linked_list/insert_at_position.png)
+3. ### Insert at end
+   ![Insert at begninng Linked List](images/operations_doubly_linked_list/insert_at_end.png)
 
 ## 3. A circular linked list is a type of linked list in which all nodes are connected to form a circle. Unlike a regular linked list:
 
