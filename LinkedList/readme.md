@@ -1,65 +1,63 @@
-# Structure of a Singly Linked List Node
+## 1. A singly linked list is a type of linked list where each node contains two parts:
 
-A **Singly Linked List (SLL)** is a linear data structure where each element (called a **node**) points to the next node in the sequence. It’s a dynamic data structure, meaning its size can grow or shrink during runtime, unlike arrays.
+- Data: The value stored in the node.
+- Next Pointer: A pointer to the next node in the list
 
----
+### Visual Representation:
 
-Each node in an SLL has two components:
-
-1. **Data**: The actual value stored in the node.
-2. **Next**: A pointer/reference to the next node in the list.
-
----
-
-## Visualization
-
-Here’s a simple representation of an SLL:
-
-```
-|---------------|          |----------------|          |----------------|          |----------------|          |----------------|
-|  10  |  --------------------> 20  |  --------------------> 30  |  -------------------> 40  |  -----------------> 50  |  None  |
-|---------------|          |----------------|          |----------------|          |----------------|          |----------------|
-
+```py
+[Data | Next] -> [Data | Next] -> [Data | Next] -> NULL
 ```
 
-- The `None` at the end signifies the end of the list.
+- Data: The value of the node.
+- Next: A pointer to the next node in the list.
+- The last node's Next pointer is NULL (indicating the end of the list).
+
+![Singly Linked List](images/singly.png)
 
 ---
 
-## Operations on Singly Linked List
+## 2. A doubly linked list is a more flexible type of linked list where each node contains:
 
-### 1. Insertion
+- Data: The value stored in the node.
+- Previous Pointer (Prev): A pointer to the previous node.
+- Next Pointer (Next): A pointer to the next node.
 
-- At the beginning.
-- At the end.
-- At a specific position.
+In a doubly linked list, you can traverse in both directions (forward and backward).
 
-### 2. Deletion
+### Visual Representation:
 
-- Remove a node from the beginning.
-- Remove a node from the end.
-- Remove a node from a specific position.
+```py
+NULL <- [Prev | Data | Next] <-> [Prev | Data | Next] <-> [Prev | Data | Next] -> NULL
+```
 
-### 3. Traversal
+- Each node has a Prev pointer to the previous node and a Next pointer to the next node.
+- The first node’s Prev pointer is NULL, and the last node’s Next pointer is NULL.
 
-- Visit each node starting from the head (first node) and follow the links to the end.
-
-### 4. Search
-
-- Find if a particular value exists in the list.
+![Doubly Linked List](images/doubly.png)
 
 ---
 
-## Advantages of SLL
+## 3. A circular linked list is a type of linked list in which all nodes are connected to form a circle. Unlike a regular linked list:
 
-- **Dynamic Size**: Can grow or shrink as needed.
-- **Efficient Insertions/Deletions**: No need to shift elements like in an array.
+1. ### Singly Circular Linked List :
 
----
+   - Each node has a Next pointer to the next node, and the Next pointer of the last node points back to the first node.
 
-## Disadvantages of SLL
+   ```powershell
+   [Data | Next] -> [Data | Next] -> [Data | Next]
+       ^---------------------------------------^
+   ```
 
-- **Sequential Access**: Traversing the list takes O(n) time.
-- **Memory Overhead**: Each node requires extra memory for the pointer.
+   ![Singly Circular Linked List](images/circular.png)
 
----
+2. ### Doubly Circular Linked List:
+   - Each node has both Prev and Next pointers, and the last node's Next points to the first node while the first node's Prev points to the last node.
+   - ### Key Features
+     - The list doesn't have a NULL pointer at either end.
+     - It enables continuous traversal through the list in a circular fashion.
+   ```powershell
+   [Prev | Data | Next] <-> [Prev | Data | Next] <-> [Prev | Data | Next]
+    ^-------------------------------------------------------------^
+   ```
+   ![Singly Circular Linked List](images/doubly_circular.png)
