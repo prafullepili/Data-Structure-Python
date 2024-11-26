@@ -17,7 +17,7 @@ class DoublyLinkedList:
         self.head = None
         self.length = 0
 
-    def insert_at_beginnig(self, data):
+    def insert_at_beginning(self, data):
         new = Node(data,None, None)
         if self.head is None:
             self.head = new
@@ -61,7 +61,33 @@ class DoublyLinkedList:
         curr.next = new_node
         self.length += 1
         self.head = self.head
-        
+
+    def delete_from_beginning(self):
+        if self.length == 0:
+            raise Exception('Invalid Operation: Empty list cannot delete')
+        if self.head.next is None:
+            self.length -= 1
+            self.head = None
+            return
+        self.head.next.prev = None
+        self.head = self.head.next
+        self.length -= 1
+        return
+
+    def delete_from_end(self):
+        if self.head is None:
+            raise Exception('Invalid Operation: Empty list cannot delete')
+        if self.head.next is None:
+            self.length -= 1
+            self.head = None
+            return
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        curr.prev.next = None
+        curr.prev = None
+        self.length -= 1
+
     def show(self):
         curr = self.head
         result = ''
@@ -72,6 +98,8 @@ class DoublyLinkedList:
         print(result)
 
     def get_last_node(self):
+        if self.head is None:
+            return None
         curr = self.head
         while curr.next:
             curr = curr.next
@@ -91,13 +119,32 @@ class DoublyLinkedList:
         print(end="\t ")
         self.show()
     
+    def delete(self,index):
+        if index > self.length-1 or index < -1:
+            raise IndexError('Invalid index')
+        if self.length == 0:
+            raise Exception('Invalid Operation: Empty list cannot delete')
+        if index == 0:
+            self.head = self.head.next
+            self.head.prev = None
+            self.length -= 1
+            return
+        curr = self.head    
+        for _ in range(index-1):
+            curr = curr.next
+        curr.next = curr.next.next
+        if curr.next is None:
+            return
+        curr.next.prev = curr
+        self.length -= 1
 
 dll = DoublyLinkedList()
 dll.insert_at_end(1)
 dll.insert_at_end(2)
 dll.insert_at_end(3)
-dll.insert_at_beginnig(4)
-dll.insert_at_beginnig(0)
-dll.insert_at(5,'Hello')
+dll.insert_at_end(4)
+dll.insert_at_beginning(0)
+dll.insert_at(5,'last')
+dll.insert_at_beginning('first')
+dll.delete_from_end()
 dll.show_bidirection()
-print(dll.length)
