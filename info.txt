@@ -1,0 +1,98 @@
+
+Dunder methods (short for "double underscore methods"), also called magic methods, are special methods in Python that start and end with double underscores (__). These methods are used to implement and customize behavior for built-in Python operations (e.g., arithmetic, comparison, or container operations).
+
+Here's a categorized list of dunder methods:
+
+1. Object Initialization and Representation
+Method	Purpose
+    __init__(self, ...)	Called when initializing a new object (constructor).
+    __new__(cls, ...)	Called to create a new instance of a class.
+    __del__(self)	Called when an object is about to be destroyed (destructor).
+    __repr__(self)	Returns an unambiguous string representation of the object (for developers).
+    __str__(self)	Returns a readable string representation of the object (for users).
+    __bytes__(self)	Converts the object to bytes.
+    __format__(self, format_spec)	Returns a formatted version of the object (e.g., for format() and f-strings).
+    __hash__(self)	Returns a hash value of the object (used in hash-based collections like set or dict).
+
+
+2. Arithmetic and Bitwise Operations
+Method	Purpose
+    __add__(self, other)	Implements addition (+).
+    __sub__(self, other)	Implements subtraction (-).
+    __mul__(self, other)	Implements multiplication (*).
+    __truediv__(self, other)	Implements true division (/).
+    __floordiv__(self, other)	Implements floor division (//).
+    __mod__(self, other)	Implements modulo (%).
+    __pow__(self, other)	Implements exponentiation (**).
+    __and__(self, other)	Implements bitwise AND (&).
+    __or__(self, other)	Implements bitwise OR (`
+    __xor__(self, other)	Implements bitwise XOR (^).
+    __lshift__(self, other)	Implements left shift (<<).
+    __rshift__(self, other)	Implements right shift (>>).
+    __neg__(self)	Implements negation (-self).
+    __pos__(self)	Implements unary plus (+self).
+    __abs__(self)	Implements abs(self).
+    __invert__(self)	Implements bitwise NOT (~self).
+
+
+3. Comparison Operations
+Method	Purpose
+    __eq__(self, other)	Implements equality (==).
+    __ne__(self, other)	Implements inequality (!=).
+    __lt__(self, other)	Implements less-than (<).
+    __le__(self, other)	Implements less-than-or-equal-to (<=).
+    __gt__(self, other)	Implements greater-than (>).
+    __ge__(self, other)	Implements greater-than-or-equal-to (>=).
+
+
+4. Type Conversion and Coercion
+Method	Purpose
+    __int__(self)	Converts the object to an integer.
+    __float__(self)	Converts the object to a float.
+    __complex__(self)	Converts the object to a complex number.
+    __bool__(self)	Converts the object to a boolean.
+    __index__(self)	Converts the object to an integer (used for slicing).
+
+
+5. Container and Iteration Protocols
+Method	Purpose
+    __len__(self)	Returns the length of the container (len()).
+    __getitem__(self, key)	Gets an item (obj[key]).
+    __setitem__(self, key, value)	Sets an item (obj[key] = value).
+    __delitem__(self, key)	Deletes an item (del obj[key]).
+    __contains__(self, item)	Checks membership (item in obj).
+    __iter__(self)	Returns an iterator object (iter(obj)).
+    __next__(self)	Returns the next item in the iteration (next()).
+    __reversed__(self)	Returns a reversed iterator.
+
+
+6. Callable and Context Managers
+Method	Purpose
+    __call__(self, ...)	Makes the object callable like a function.
+    __enter__(self)	Enters a runtime context (for with statement).
+    __exit__(self, exc_type, exc_value, traceback)	Exits a runtime context.
+
+
+7. Descriptors
+Method	Purpose
+    __get__(self, instance, owner)	Retrieves a value.
+    __set__(self, instance, value)	Sets a value.
+    __delete__(self, instance)	Deletes a value.
+
+
+8. Metaprogramming
+Method	Purpose
+    __getattr__(self, name)	Called when an attribute is not found.
+    __setattr__(self, name, value)	Sets an attribute.
+    __delattr__(self, name)	Deletes an attribute.
+    __dir__(self)	Returns a list of valid attributes.
+    __class_getitem__(cls, key)	Implements subscripting for classes (MyClass[key]).
+
+
+9. Other Dunder Methods
+Method	Purpose
+    __sizeof__(self)	Returns the size of the object in memory.
+    __slots__	Limits the attributes that can be added to an object.
+    __subclasshook__(cls, subclass)	Customizes issubclass() behavior.
+    __copy__(self)	Implements a shallow copy.
+    __deepcopy__(self, memo)	Implements a deep copy.
